@@ -4,9 +4,11 @@ import Post from './Components/FriendsPost/Post';
 import { BrowserRouter as Router, Switch,Route } from 'react-router-dom';
 import Details from './Components/Details/Details';
 import Header from './Components/Header/Header';
+import NotFound from './Components/NotFound/NotFound';
 
 
-function App() {
+ function App() {
+
   return (
     <div>
       <Header></Header>
@@ -15,14 +17,14 @@ function App() {
         <Route path="/post">
           <Post></Post>
         </Route>
-        <Route path="/posts/:NewId">
+        <Route path="/posts/:postId">
           <Details></Details>
         </Route>
         <Route exact path="/">
           <Post></Post>
         </Route>
         <Route path="*">
-          <Post></Post>
+          <NotFound></NotFound>
         </Route>
       </Switch>
     </Router>

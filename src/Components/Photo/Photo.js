@@ -19,9 +19,16 @@ const Photo = () => {
 
 function ShowPhoto(props){
     const {picture}=props.newPhoto;
+    
+    const ImagStyle={
+        borderRadius:"50%",
+        margin:"20px",
+        border:"2px solid red"
+    }
+
     return(
-        <div>
-            <img src={picture.large}/>
+        <div >
+            <img style={ImagStyle} src={picture.large}/>
         </div>
     )
 }

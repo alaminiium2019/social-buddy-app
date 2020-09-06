@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import { Button } from "@material-ui/core";
-const Post = () => {
-  const [post, setPost] = useState([]); //create state for data load
+import { Link} from "react-router-dom";
 
+const Post = () => {
+  const [post, setPost] = useState([]);
+//get data from API
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((res) => res.json())
@@ -14,10 +12,7 @@ const Post = () => {
 
   return (
     <div>
-      <Container fixed>
-        <h2>Post will be here...</h2>
-      </Container>
-
+      <h2>Total Post: {post.length}</h2>
       {post.map((post) => (
         <ShowPost post={post}></ShowPost>
       ))}
@@ -26,21 +21,15 @@ const Post = () => {
 };
 
 function ShowPost(props) {
-  const { id, title, body, email } = props.post;
+  const { id, title, body} = props.post;
+
   return (
-    <Container bgcolor="red">
-      <Box border={2} margin="40px" bgcolor="primary.main">
-        <React.Fragment>
-          <h2>Id: {id}</h2>
-          <p>{email}</p>
-          <h3>Title:{title}</h3>
-          <p>{body}</p>
-          <Button variant="outlined" color="primary">
-            <Link to={"/posts/" + id}>See More</Link>
-          </Button>
-        </React.Fragment>
-      </Box>
-    </Container>
+  <div>
+      <p>{id}</p>
+      <p>{title}</p>
+      <p>{body}</p>
+      <h2><Link to={`/posts/${id}`}>See More</Link></h2>
+    </div>
   );
 }
 
