@@ -1,15 +1,9 @@
-.head-section{
-    background-color: antiquewhite;
-    margin-bottom: 20px;
-    text-align: center;
+*{
+    padding:0px;
+    margin:0px;
 }
-.head-section nav a{
-    padding-left: 30px;
-    padding-bottom: 5px;
-    text-decoration:none;
-}
-nav{
-    padding-bottom: 20px;
-    text-align: left;
-    margin-left: 80px;
+#links a{
+text-decoration:none;
+color:white;
+padding-right:20px;
 }

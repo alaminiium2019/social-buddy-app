@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Photo from "../Photo/Photo";
+import { Container, Card } from "@material-ui/core";
 
 const Details = () => {
   const { postId } = useParams();
@@ -33,18 +34,25 @@ const Details = () => {
 };
 
 function ShowDetails(props) {
-  const { id, body, email } = props.comments;
+  const { name,body, email } = props.comments;
+
+  const commentStyle={
+    marginTop:'20px',
+    paddingLeft:'10px',
+    lineHeight:'30px'
+  }
   return (
-    <div>
+    <Container>
+    <Card borders={2} style={{display:'flex',marginBottom:'20px', marginTop:'20px', border:'2px solid green'}}>
       <div>
       <Photo></Photo>
       </div>
-      <div>      
-      <p>{email}</p>
-      <p>{id}</p>
+      <div style={commentStyle}>
+      <h2>{name}</h2>      
+      <h4>{email}</h4>
       <p>{body}</p></div>
-
-    </div>
+    </Card>
+    </Container>
   );
 }
 export default Details;
