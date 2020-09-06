@@ -6,17 +6,11 @@ import { Container, Card } from "@material-ui/core";
 const Details = () => {
   const { postId } = useParams();
 
+  //create state for get comments
   const [comment, setComment] = useState([]);
-  // const [postData, setPostData] = useState({});
 
-  // //data
-  // useEffect(() => {
-  //   fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setPostData(data));
-  // }, []);
+  //get comment from api
 
-  //comments
   useEffect(() => {
     const url = `https://jsonplaceholder.typicode.com/comments?postId=${postId}`;
     fetch(url)
@@ -33,25 +27,36 @@ const Details = () => {
   );
 };
 
-function ShowDetails(props) {
-  const { name,body, email } = props.comments;
+//Show comments
 
-  const commentStyle={
-    marginTop:'20px',
-    paddingLeft:'10px',
-    lineHeight:'30px'
-  }
+function ShowDetails(props) {
+  const { name, body, email } = props.comments;
+
+  const commentStyle = {
+    marginTop: "20px",
+    paddingLeft: "10px",
+    lineHeight: "30px",
+  };
   return (
     <Container>
-    <Card borders={2} style={{display:'flex',marginBottom:'20px', marginTop:'20px', border:'2px solid green'}}>
-      <div>
-      <Photo></Photo>
-      </div>
-      <div style={commentStyle}>
-      <h2>{name}</h2>      
-      <h4>{email}</h4>
-      <p>{body}</p></div>
-    </Card>
+      <Card
+        borders={2}
+        style={{
+          display: "flex",
+          marginBottom: "20px",
+          marginTop: "20px",
+          border: "2px solid green",
+        }}
+      >
+        <div>
+          <Photo></Photo>
+        </div>
+        <div style={commentStyle}>
+          <h2>{name}</h2>
+          <h4>{email}</h4>
+          <p>{body}</p>
+        </div>
+      </Card>
     </Container>
   );
 }
